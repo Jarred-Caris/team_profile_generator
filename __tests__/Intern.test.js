@@ -1,29 +1,25 @@
-// const Intern = require("./lib/Intern");
+const Intern = require("../lib/Intern");
 
-// test ("Can instantiate Employee instance", () => {
-//     const intern = new Intern = require("./lib/Intern");
-//     expect(typeof(intern)).toBe("object");
-// });
+describe("Intern", () => {
+  describe("Initialization", () => {
+    it("should create a school property", () => {
+      const intern = new Intern("Sarah", "1", "sarah@email", "Uni");
 
-// test ("Can set name through constructor", () => {
-//     const name = "Jarred";
-//     const intern = new Intern(name);
-//     expect(intern.name).toBe(name);
-// });
+      expect(intern.school).toEqual("uni");
+    });
 
-// test ("Can set ID through constructor", () => {
-//     const number = 1234;
-//     const intern = new Intern(number);
-//     expect(intern.id).toBe(number);
-// });
+    it("should return a name when getSchool() function is called", () => {
+        const intern = new Intern("Sarah", "1", "sarah@email", "Uni");
+  
+        expect(intern.getSchool()).toEqual("uni");
+      });
+  
+      it("should return all information when getRole() function is called", () => {
+        const intern = new Intern("Sarah", "1", "sarah@email", "Uni");
+        const test = "Intern";
+  
+        expect(intern.getRole()).toEqual(test);
+      });
 
-// test ("Can set email through constructor", () => {
-//     const testValue = "test@email.com";
-//     const intern = new Intern(testValue);
-//     expect(intern.email).toBe(testValue);
-// });
-// test ("Can set school through constructor", () => {
-//     const testValue = "school";
-//     const intern = new Intern(testValue);
-//     expect(intern.school).toBe(testValue);
-// });
+  });
+});

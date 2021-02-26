@@ -1,29 +1,25 @@
-// const Manager = require("./lib/Manager");
+const Manager = require("../lib/Manager");
 
-// test ("Can instantiate Employee instance", () => {
-//     const manager = new Manager = require("./lib/Manager");
-//     expect(typeof(manager)).toBe("object");
-// });
+describe("Manager", () => {
+  describe("Initialization", () => {
+    it("should create a office ID number property", () => {
+      const manager = new Manager("Sarah", "1", "sarah@email", "2");
 
-// test ("Can set name through constructor", () => {
-//     const name = "Jarred";
-//     const manager = new Manager(name);
-//     expect(manager.name).toBe(name);
-// });
+      expect(manager.officeNumber).toEqual("2");
+    });
 
-// test ("Can set ID through constructor", () => {
-//     const number = 1234;
-//     const manager = new Manager(number);
-//     expect(manager.id).toBe(number);
-// });
+    it("should return a number when getOfficeNumber() function is called", () => {
+        const manager = new Manager("Sarah", "1", "sarah@email", "2");
+  
+        expect(manager.getOfficeNumber()).toEqual("2");
+      });
+  
+      it("should return all information when getRole() function is called", () => {
+        const manager = new Manager("Sarah", "1", "sarah@email", "2");
+        const test = "Manager";
+  
+        expect(manager.getRole()).toEqual(test);
+      });
 
-// test ("Can set email through constructor", () => {
-//     const testValue = "test@email.com";
-//     const manager = new Manager(testValue);
-//     expect(manager.email).toBe(testValue);
-// });
-// test ("Can set office ID through constructor", () => {
-//     const testValue = "officeID";
-//     const manager = new Manager(testValue);
-//     expect(manager.officeId).toBe(testValue);
-// });
+  });
+});

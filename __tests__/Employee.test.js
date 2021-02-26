@@ -1,24 +1,36 @@
-const Employee = require("./lib/Employee");
+const Employee = require("../lib/Employee");
 
-test ("Can instantiate Employee instance", () => {
-    const employee = new Employee();
-    expect(typeof(employee)).toBe("object");
-});
+describe("Employee", () => {
+  describe("Initialization", () => {
+    it("should create a name through constructor", () => {
+      const employee = new Employee("Sarah", "1", "sarah@email");
 
-test ("Can set name through constructor", () => {
-    const name = "Jarred";
-    const employee = new Employee(name);
-    expect(employee.name).toBe(name);
-});
+      expect(employee.name).toEqual("Sarah");
+    });
 
-test ("Can set ID through constructor", () => {
-    const number = 1234;
-    const employee = new Employee(number);
-    expect(employee.id).toBe(number);
-});
+    it("should create a number through constructor", () => {
+      const employee = new Employee("Sarah", "1", "sarah@email");
 
-test ("Can set email through constructor", () => {
-    const number = "test@email.com";
-    const employee = new Employee(number);
-    expect(employee.id).toBe(number);
+      expect(employee.id).toEqual("1");
+    });
+
+    it("should create a email address through constructor", () => {
+      const employee = new Employee("Sarah", "1", "sarah@email");
+
+      expect(employee.email).toEqual("sarah@email");
+    });
+
+    it("should return a name when getName() function is called", () => {
+      const employee = new Employee("Sarah", "1", "sarah@email");
+
+      expect(employee.getName()).toEqual("Sarah");
+    });
+
+    it("should return all information when getRole() function is called", () => {
+      const employee = new Employee("Sarah", "1", "sarah@email");
+      const test = "Employee";
+
+      expect(employee.getRole()).toEqual(test);
+    });
+  });
 });

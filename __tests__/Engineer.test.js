@@ -1,29 +1,25 @@
-// const Engineer = require("./lib/Engineer");
+const Engineer = require("../lib/Engineer");
 
-// test ("Can instantiate Employee instance", () => {
-//     const engineer = new Engineer = require("./lib/Engineer");
-//     expect(typeof(engineer)).toBe("object");
-// });
+describe("Engineer", () => {
+  describe("Initialization", () => {
+    it("should create a github username property", () => {
+      const engineer = new Engineer("Sarah", "1", "sarah@email", "hub");
 
-// test ("Can set name through constructor", () => {
-//     const name = "Jarred";
-//     const engineer = new Engineer(name);
-//     expect(engineer.name).toBe(name);
-// });
+      expect(engineer.github).toEqual("hub");
+    });
 
-// test ("Can set ID through constructor", () => {
-//     const number = 1234;
-//     const engineer = new Engineer(number);
-//     expect(engineer.id).toBe(number);
-// });
+    it("should return a github account when getGithub() function is called", () => {
+        const engineer = new Engineer("Sarah", "1", "sarah@email", "sarah");
+  
+        expect(engineer.getGithub()).toEqual("hub");
+      });
+  
+      it("should return all information when getRole() function is called", () => {
+        const engineer = new Engineer("Sarah", "1", "sarah@email", "hub");
+        const test = "Engineer";
+  
+        expect(engineer.getRole()).toEqual(test);
+      });
 
-// test ("Can set email through constructor", () => {
-//     const testValue = "test@email.com";
-//     const engineer = new Engineer(testValue);
-//     expect(engineer.email).toBe(testValue);
-// });
-// test ("Can set github through constructor", () => {
-//     const testValue = "github";
-//     const engineer = new Engineer(testValue);
-//     expect(engineer.github).toBe(testValue);
-// });
+  });
+});
