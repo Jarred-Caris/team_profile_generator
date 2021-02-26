@@ -18,7 +18,7 @@ test ("Can set ID through constructor", () => {
 });
 
 test ("Can set email through constructor", () => {
-    const number = 1234;
+    const number = "test@email.com";
     const employee = new Employee(number);
     expect(employee.id).toBe(number);
 });
