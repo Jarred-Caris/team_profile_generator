@@ -3,8 +3,8 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const fs = require("fs");
 const inquirer = require("inquirer");
-
-
+const generateHTML = require("./lib/generateHTML")
+const fileName = "./dist/index.html"
 const employees = [];
 
 const managerQuestions = [
@@ -110,7 +110,7 @@ function createTeam() {
           createIntern();
           break;
         default:
-        generateHTML(res);
+        writeToFile(res);
       }
     });
 }
@@ -132,15 +132,15 @@ function createIntern() {
       createTeam();
     });
   }
+  const writeToFile = () => {
+    console.log(employees);
+    const teamComplete = JSON.stringify(employees)
+    fs.writeFile(fileName, teamComplete, (err) =>
+    err ? console.error(err) :
+        console.log('Welcome to your new team!')
+    )
+}
 
 
- const generateHTML = () => {
-     console.log(employees);
-     const teamComplete = JSON.stringify(employees)
-     fs.writeFile('employees.json', teamComplete, function(err) {
-         if (err) throw (err);
-         console.log('Welcome to your new team!')
-     })
- }
 
  module.exports = generateHTML;
