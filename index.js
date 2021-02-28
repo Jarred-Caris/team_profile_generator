@@ -3,8 +3,8 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const fs = require("fs");
 const inquirer = require("inquirer");
-const generateHTML = require("./lib/generateHTML")
-const fileName = "./dist/index.html"
+const generateHTML = require("./lib/generateHTML");
+const fileName = "./dist/index.html";
 const employees = [];
 
 const managerQuestions = [
@@ -76,18 +76,20 @@ const internQuestions = [
   },
 ];
 
+
 function start() {
   inquirer
     .prompt(managerQuestions)
     .then((res) => {
       console.log(res);
       manager = new Manager(res.name, res.id, res.email, res.officeNumber);
-      employees.push("Manager");
+      employees.push(Manager);
       createTeam();
     })
     .catch();
 }
 start();
+
 
 function createTeam() {
   console.log("create Team");
@@ -110,37 +112,58 @@ function createTeam() {
           createIntern();
           break;
         default:
-        writeToFile(res);
+          writeToFile(res);
       }
     });
 }
+
 
 function createEngineer() {
   inquirer.prompt(engineerQuestions).then((res) => {
     console.log(res);
     engineer = new Engineer(res.name, res.id, res.email, res.github);
-    employees.push("Engineer");
+    employees.push(Engineer);
     createTeam();
   });
 }
 
+
 function createIntern() {
-    inquirer.prompt(internQuestions).then((res) => {
-      console.log(res);
-      intern = new Intern(res.name, res.id, res.email, res.school);
-      employees.push("Intern");
-      createTeam();
-    });
-  }
-  const writeToFile = () => {
-    console.log(employees);
-    const teamComplete = JSON.stringify(employees)
-    fs.writeFile(fileName, teamComplete, (err) =>
-    err ? console.error(err) :
-        console.log('Welcome to your new team!')
-    )
+  inquirer.prompt(internQuestions).then((res) => {
+    console.log(res);
+    intern = new Intern(res.name, res.id, res.email, res.school);
+    employees.push(Intern);
+    createTeam();
+  });
 }
 
 
+const writeToFile = () => {
+  console.log(employees);
+  const teamComplete = JSON.stringify(employees);
+  fs.writeFile(fileName, teamComplete, (err) =>
+    err ? console.error(err) : console.log("Welcome to your new team!")
+  );
+};
 
- module.exports = generateHTML;
+// function writeToFile(fileName, data) {
+//   fs.writeFile(fileName, data, function(err) {
+//       if (err){
+//           return console.log(err)
+//       }
+//       else {
+//           console.log("Input succesful")
+//       }
+//   }
+//   )};
+
+//   function init() {
+//     inquirer.prompt(questions)
+//       .then((res) => writeToFile(`${fileName}.html`, generateHTML(res)))
+//       .then(() => console.log(" Team created successfully"))
+//       .catch((err) => console.error(err));
+//   }
+
+// init();
+
+module.exports = generateHTML;
