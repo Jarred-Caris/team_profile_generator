@@ -112,7 +112,7 @@ function createTeam() {
           createIntern();
           break;
         default:
-          writeToFile(res);
+          writeToFile(fileName, generateHTML(employees));
       }
     });
 }
@@ -138,43 +138,15 @@ function createIntern() {
 }
 
 
-const writeToFile = () => {
+const writeToFile = (fileName, employees) => {
   console.log(employees);
-  const teamComplete = JSON.stringify(employees);
-  fs.writeFile(fileName, teamComplete, (err) =>
+  // const teamComplete = JSON.stringify(employees);
+  fs.writeFile(fileName, employees, (err) =>
     err ? console.error(err) : console.log("Welcome to your new team!")
   );
 };
 
-function constructHTML() {
 
-   
-const startHTML = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello Team</title>
-
-<link rel="stylesheet" href="style.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
-</head>
-<body>
-    <h1 id="title">This is your new TEAM!!</h1>
-    
-
-
-
-</body>
-</html>`
-
-
-   if (employee === manager )
-
-  
-}
 
 // function writeToFile(fileName, data) {
 //   fs.writeFile(fileName, data, function(err) {
@@ -195,5 +167,6 @@ const startHTML = `<!DOCTYPE html>
 //   }
 
 // init();
+start();
 
-module.exports = generateHTML;
+module.exports = index;
