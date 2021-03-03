@@ -88,7 +88,7 @@ function start() {
     })
     .catch();
 }
-start();
+
 
 
 function createTeam() {
@@ -148,25 +148,5 @@ const writeToFile = (fileName, employees) => {
 
 
 
-// function writeToFile(fileName, data) {
-//   fs.writeFile(fileName, data, function(err) {
-//       if (err){
-//           return console.log(err)
-//       }
-//       else {
-//           console.log("Input succesful")
-//       }
-//   }
-//   )};
 
-//   function init() {
-//     inquirer.prompt(questions)
-//       .then((res) => writeToFile(`${fileName}.html`, generateHTML(res)))
-//       .then(() => console.log(" Team created successfully"))
-//       .catch((err) => console.error(err));
-//   }
-
-// init();
 start();
-
-module.exports = index;
