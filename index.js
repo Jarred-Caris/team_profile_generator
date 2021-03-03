@@ -83,7 +83,7 @@ function start() {
     .then((res) => {
       console.log(res);
       manager = new Manager(res.name, res.id, res.email, res.officeNumber);
-      employees.push(Manager);
+      employees.push(manager);
       createTeam();
     })
     .catch();
@@ -122,7 +122,7 @@ function createEngineer() {
   inquirer.prompt(engineerQuestions).then((res) => {
     console.log(res);
     engineer = new Engineer(res.name, res.id, res.email, res.github);
-    employees.push(Engineer);
+    employees.push(engineer);
     createTeam();
   });
 }
@@ -132,7 +132,7 @@ function createIntern() {
   inquirer.prompt(internQuestions).then((res) => {
     console.log(res);
     intern = new Intern(res.name, res.id, res.email, res.school);
-    employees.push(Intern);
+    employees.push(intern);
     createTeam();
   });
 }
@@ -145,6 +145,36 @@ const writeToFile = () => {
     err ? console.error(err) : console.log("Welcome to your new team!")
   );
 };
+
+function constructHTML() {
+
+   
+const startHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Team</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1 id="title">This is your new TEAM!!</h1>
+    
+
+
+
+</body>
+</html>`
+
+
+   if (employee === manager )
+
+  
+}
 
 // function writeToFile(fileName, data) {
 //   fs.writeFile(fileName, data, function(err) {
