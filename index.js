@@ -3,7 +3,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const fs = require("fs");
 const inquirer = require("inquirer");
-const generateHTML = require("./lib/generateHTML");
+const generateHTML = require("./generateHTML.js");
 const fileName = "./dist/index.html";
 const employees = [];
 
@@ -112,7 +112,7 @@ function createTeam() {
           createIntern();
           break;
         default:
-          writeToFile(fileName, generateHTML(employees));
+          writeToFile(fileName, employees);
       }
     });
 }
@@ -139,14 +139,11 @@ function createIntern() {
 
 
 const writeToFile = (fileName, employees) => {
-  console.log(employees);
-  // const teamComplete = JSON.stringify(employees);
-  fs.writeFile(fileName, employees, (err) =>
+  fs.writeFile(fileName, generateHTML(employees), (err) =>
     err ? console.error(err) : console.log("Welcome to your new team!")
   );
 };
 
 
-
-
 start();
+
